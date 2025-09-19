@@ -8,15 +8,117 @@
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/css/style.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #f8f9fa;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Header */
+    #header {
+      background: linear-gradient(90deg, #007bff, #6610f2);
+      padding: 15px 0;
+    }
+
+    #header .logo a {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+
+    #logoutBtn {
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
+
+    #logoutBtn:hover {
+      background: #c82333;
+    }
+
+    /* Dashboard Section */
+    .section-title h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #343a40;
+    }
+
+    .section-title p {
+      font-size: 1.1rem;
+      color: #6c757d;
+    }
+
+    /* Card Styling */
+    .card {
+      border: none;
+      border-radius: 15px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    h4 {
+      color: #495057;
+      margin-bottom: 20px;
+    }
+
+    /* Buttons */
+    .btn-success {
+      border-radius: 25px;
+      font-weight: 600;
+      padding: 10px 20px;
+    }
+
+    .btn-danger {
+      border-radius: 25px;
+      font-weight: 600;
+      padding: 6px 16px;
+    }
+
+    /* Uploaded Videos */
+    #videoList li {
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 10px;
+      background: #ffffff;
+      border: 1px solid #dee2e6;
+      transition: 0.2s;
+    }
+
+    #videoList li:hover {
+      background: #f1f5ff;
+    }
+
+    #videoList strong {
+      font-size: 1.1rem;
+      color: #007bff;
+    }
+
+    #videoList small {
+      color: #6c757d;
+    }
+
+    #videoList em {
+      font-size: 0.85rem;
+      color: #495057;
+    }
+  </style>
 </head>
 
 <body>
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top bg-light shadow-sm">
+  <header id="header" class="fixed-top shadow-sm">
     <div class="container d-flex align-items-center justify-content-between">
       <h1 class="logo"><a href="index.html">Omega's Academy</a></h1>
       <nav>
-        <button class="btn btn-danger" id="logoutBtn">Logout</button>
+        <button class="btn btn-danger" id="logoutBtn"><i class="bi bi-box-arrow-right"></i> Logout</button>
       </nav>
     </div>
   </header>
@@ -24,14 +126,14 @@
   <main id="main" style="margin-top: 100px;">
     <div class="container">
       <div class="section-title text-center">
-        <h2>Tutor Dashboard</h2>
+        <h2><i class="bi bi-mortarboard-fill"></i> Tutor Dashboard</h2>
         <p id="welcomeMsg"></p>
       </div>
 
       <!-- Course Selector -->
       <div class="mb-4">
-        <label for="courseSelect" class="form-label">Select Course</label>
-        <select id="courseSelect" class="form-select">
+        <label for="courseSelect" class="form-label fw-bold">Select Course</label>
+        <select id="courseSelect" class="form-select shadow-sm">
           <option value="">-- Choose a Course --</option>
           <option value="Microsoft Excel">Microsoft Excel</option>
           <option value="C">C Programming</option>
@@ -49,28 +151,28 @@
 
       <!-- Video Upload Form -->
       <div class="card shadow-sm p-4 mb-4">
-        <h4>Upload a New Video</h4>
+        <h4><i class="bi bi-upload"></i> Upload a New Video</h4>
         <form id="uploadForm">
           <div class="mb-3">
             <label for="videoTitle" class="form-label">Video Title</label>
-            <input type="text" id="videoTitle" class="form-control" placeholder="Enter video title" required>
+            <input type="text" id="videoTitle" class="form-control shadow-sm" placeholder="Enter video title" required>
           </div>
           <div class="mb-3">
             <label for="videoDescription" class="form-label">Description</label>
-            <textarea id="videoDescription" class="form-control" rows="3"
+            <textarea id="videoDescription" class="form-control shadow-sm" rows="3"
               placeholder="Enter video description"></textarea>
           </div>
           <div class="mb-3">
             <label for="videoFile" class="form-label">Upload Video</label>
-            <input type="file" id="videoFile" class="form-control" accept="video/*" required>
+            <input type="file" id="videoFile" class="form-control shadow-sm" accept="video/*" required>
           </div>
-          <button type="submit" class="btn btn-success">Upload</button>
+          <button type="submit" class="btn btn-success"><i class="bi bi-cloud-arrow-up"></i> Upload</button>
         </form>
       </div>
 
       <!-- Video List -->
       <div class="card shadow-sm p-4">
-        <h4>Uploaded Videos</h4>
+        <h4><i class="bi bi-collection-play-fill"></i> Uploaded Videos</h4>
         <ul id="videoList" class="list-group"></ul>
       </div>
     </div>
@@ -113,14 +215,14 @@
 
       // For demo, we just show it in the list
       const li = document.createElement("li");
-      li.className = "list-group-item d-flex justify-content-between align-items-center";
+      li.className = "list-group-item d-flex justify-content-between align-items-center shadow-sm";
       li.innerHTML = `
         <div>
           <strong>${title}</strong><br>
           <small>${description}</small><br>
           <em>File: ${file.name}</em>
         </div>
-        <button class="btn btn-sm btn-danger deleteBtn">Delete</button>
+        <button class="btn btn-sm btn-danger deleteBtn"><i class="bi bi-trash"></i> Delete</button>
       `;
       videoList.appendChild(li);
 
