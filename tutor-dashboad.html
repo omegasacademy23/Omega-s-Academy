@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutor Dashboard - Omega's Academy</title>
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top bg-light shadow-sm">
+    <div class="container d-flex align-items-center justify-content-between">
+      <h1 class="logo"><a href="index.html">Omega's Academy</a></h1>
+      <nav>
+        <button class="btn btn-danger" id="logoutBtn">Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" style="margin-top: 100px;">
+    <div class="container">
+      <div class="section-title text-center">
+        <h2>Tutor Dashboard</h2>
+        <p id="welcomeMsg"></p>
+      </div>
+
+      <!-- Course Selector -->
+      <div class="mb-4">
+        <label for="courseSelect" class="form-label">Select Course</label>
+        <select id="courseSelect" class="form-select">
+          <option value="">-- Choose a Course --</option>
+          <option value="Microsoft Excel">Microsoft Excel</option>
+          <option value="C">C Programming</option>
+          <option value="C++">C++ Programming</option>
+          <option value="Python">Python</option>
+          <option value="Java">Java</option>
+          <option value="Full-Stack">Full-Stack Development</option>
+          <option value="Web">Web Development</option>
+          <option value="Back-End">Back-End Development</option>
+          <option value="Front-End">Front-End Development</option>
+          <option value="DA">Data Analytics</option>
+          <option value="DSA">Data Structures and Algorithms</option>
+        </select>
+      </div>
+
+      <!-- Video Upload Form -->
+      <div class="card shadow-sm p-4 mb-4">
+        <h4>Upload a New Video</h4>
+        <form id="uploadForm">
+          <div class="mb-3">
+            <label for="videoTitle" class="form-label">Video Title</label>
+            <input type="text" id="videoTitle" class="form-control" placeholder="Enter video title" required>
+          </div>
+          <div class="mb-3">
+            <label for="videoDescription" class="form-label">Description</label>
+            <textarea id="videoDescription" class="form-control" rows="3"
+              placeholder="Enter video description"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="videoFile" class="form-label">Upload Video</label>
+            <input type="file" id="videoFile" class="form-control" accept="video/*" required>
+          </div>
+          <button type="submit" class="btn btn-success">Upload</button>
+        </form>
+      </div>
+
+      <!-- Video List -->
+      <div class="card shadow-sm p-4">
+        <h4>Uploaded Videos</h4>
+        <ul id="videoList" class="list-group"></ul>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // ✅ Check if logged in & role is tutor
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!user || user.role.toLowerCase() !== "tutor") {
+      alert("Unauthorized access! Redirecting to login.");
+      window.location.href = "login.html";
+    }
+
+    // Show welcome message
+    document.getElementById("welcomeMsg").innerText = "Welcome, " + user.name;
+
+    // Logout
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "login.html";
+    });
+
+    // Handle video upload
+    const uploadForm = document.getElementById("uploadForm");
+    const videoList = document.getElementById("videoList");
+
+    uploadForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const title = document.getElementById("videoTitle").value;
+      const description = document.getElementById("videoDescription").value;
+      const fileInput = document.getElementById("videoFile");
+
+      if (!fileInput.files.length) {
+        alert("Please select a video file.");
+        return;
+      }
+
+      const file = fileInput.files[0];
+
+      // For demo, we just show it in the list
+      const li = document.createElement("li");
+      li.className = "list-group-item d-flex justify-content-between align-items-center";
+      li.innerHTML = `
+        <div>
+          <strong>${title}</strong><br>
+          <small>${description}</small><br>
+          <em>File: ${file.name}</em>
+        </div>
+        <button class="btn btn-sm btn-danger deleteBtn">Delete</button>
+      `;
+      videoList.appendChild(li);
+
+      // Clear form
+      uploadForm.reset();
+
+      // Delete button functionality
+      li.querySelector(".deleteBtn").addEventListener("click", () => {
+        li.remove();
+      });
+    });
+  </script>
+</body>
+
+</html>
