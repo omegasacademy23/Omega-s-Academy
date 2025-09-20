@@ -556,3 +556,20 @@
     padding-right: 0;
     border-right: none;
 }
+
+#attendanceList .list-group-item {
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: #f8f6fb;
+  transition: 0.3s ease-in-out;
+}
+
+#attendanceList .list-group-item:hover {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+#attendanceList .list-group-item strong {
+  color: var(--dark);
+}
+
