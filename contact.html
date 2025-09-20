@@ -139,11 +139,9 @@
 
                 <!-- Right Contact Form -->
                 <div class="col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
-                    <form action="https://formsubmit.co/omegasacademy.23@gmail.com" method="POST">
+                    <form id="contactForm" action="https://formsubmit.co/omegasacademy.23@gmail.com" method="POST">
                         <!-- Disable captcha -->
                         <input type="hidden" name="_captcha" value="false">
-                        <!-- Redirect after submit -->
-                        <input type="hidden" name="_next" value="https://yourwebsite.com/thankyou.html">
 
                         <div class="row g-3">
                             <div class="col-md-6">
@@ -156,6 +154,13 @@
                                 <div class="form-floating">
                                     <input type="email" class="form-control" id="email" name="email" required>
                                     <label for="email">Your Email</label>
+                                </div>
+                            </div>
+                            <!-- Contact Number Field -->
+                            <div class="col-md-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="phone" name="phone" required>
+                                    <label for="phone">Your Contact Number</label>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -247,5 +252,29 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <!-- Custom Script for Form -->
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Stop normal form submit
+
+            let form = this;
+            let formData = new FormData(form);
+
+            fetch(form.action, {
+                method: "POST",
+                body: formData,
+            }).then(response => {
+                if (response.ok) {
+                    alert("Message sent");
+                    window.location.href = "index.html"; // Redirect to index page
+                } else {
+                    alert("Something went wrong. Please try again.");
+                }
+            }).catch(error => {
+                alert("Error: " + error.message);
+            });
+        });
+    </script>
 </body>
 </html>
