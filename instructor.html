@@ -5,8 +5,6 @@
     <meta charset="utf-8">
     <title>Omega's Academy : Instructor</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
 
     <!-- Favicon -->
     <link href="img/icon.png" rel="icon">
@@ -99,10 +97,10 @@
                     <p class="mb-4">Fill the form below to apply as an Instructor</p>
 
                     <!-- FormSubmit Integration -->
-                    <form id="instructorForm" action="https://formsubmit.co/omegasacademy.23@gmail.com" method="POST">
+                    <form id="instructorForm" action="https://formsubmit.co/omegasacademy.23@gmail.com" method="POST" target="hidden_iframe" onsubmit="showModal()">
                         <!-- Hidden inputs -->
                         <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="https://yourwebsite.com/thankyou.html">
+                        <input type="hidden" name="_next" value="index.html">
 
                         <div class="row g-3">
                             <div class="col-md-6">
@@ -133,8 +131,8 @@
 
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <select name="degree" id="degree" class="form-control">
-                                        <option value="..">...</option>
+                                    <select name="degree" id="degree" class="form-control" required>
+                                        <option value="">Select Degree</option>
                                         <option value="High School">High School</option>
                                         <option value="Undergraduate">Undergraduate</option>
                                         <option value="Graduate">Graduate</option>
@@ -146,12 +144,19 @@
 
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <select name="subject" id="subject" class="form-control">
-                                        <option value="..">...</option>
-                                        <option value="Technology">Technology</option>
-                                        <option value="Marketing">Marketing</option>
-                                        <option value="Business">Business</option>
-                                        <option value="Education">Education</option>
+                                    <select name="subject" id="subject" class="form-control" required>
+                                        <option value="">Select Subject</option>
+                                        <option value="C">C</option>
+                                        <option value="C++">C++</option>
+                                        <option value="Python">Python</option>
+                                        <option value="MSE">Microsoft Excel</option>
+                                        <option value="Java">Java</option>
+                                        <option value="FSD">Full-Stack Development</option>
+                                        <option value="BED">Back-End Development</option>
+                                        <option value="FED">Front-End Development</option>
+                                        <option value="WD">Web Development</option>
+                                        <option value="DA">Data Analytics</option>
+                                        <option value="DSA">Data Structures and Analytics</option>
                                     </select>
                                     <label for="subject">Subject to Teach</label>
                                 </div>
@@ -176,7 +181,23 @@
                             </div>
                         </div>
                     </form>
-                    <!-- Form End -->
+
+                    <!-- Hidden iframe for FormSubmit -->
+                    <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+                    <!-- Success Modal -->
+                    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content border-0">
+                                <div class="modal-body text-center p-5">
+                                    <h4 class="mb-3 text-success">Message Sent!</h4>
+                                    <p>Thank you for applying. You will be redirected shortly.</p>
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="redirectHome()">Ok</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -228,5 +249,16 @@
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+
+    <script>
+    function showModal() {
+        var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+        successModal.show();
+    }
+
+    function redirectHome() {
+        window.location.href = "index.html";
+    }
+    </script>
 </body>
 </html>
