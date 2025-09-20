@@ -2,239 +2,254 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tutor Dashboard - Omega's Academy</title>
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/css/style.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Omega's Academy : Tutor's Dashboard</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="img/icon.png" rel="icon">
 
-  <style>
-    body {
-      background: #f8f9fa;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    }
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap"
+        rel="stylesheet">
 
-    /* Header */
-    #header {
-      background: linear-gradient(90deg, #007bff, #6610f2);
-      padding: 15px 0;
-    }
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    #header .logo a {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: white;
-      text-decoration: none;
-    }
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-    #logoutBtn {
-      font-size: 0.9rem;
-      font-weight: 600;
-      padding: 8px 18px;
-      border-radius: 30px;
-      transition: 0.3s;
-    }
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    #logoutBtn:hover {
-      background: #c82333;
-    }
-
-    /* Dashboard Section */
-    .section-title h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #343a40;
-    }
-
-    .section-title p {
-      font-size: 1.1rem;
-      color: #6c757d;
-    }
-
-    /* Card Styling */
-    .card {
-      border: none;
-      border-radius: 15px;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.08);
-    }
-
-    h4 {
-      color: #495057;
-      margin-bottom: 20px;
-    }
-
-    /* Buttons */
-    .btn-success {
-      border-radius: 25px;
-      font-weight: 600;
-      padding: 10px 20px;
-    }
-
-    .btn-danger {
-      border-radius: 25px;
-      font-weight: 600;
-      padding: 6px 16px;
-    }
-
-    /* Uploaded Videos */
-    #videoList li {
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 10px;
-      background: #ffffff;
-      border: 1px solid #dee2e6;
-      transition: 0.2s;
-    }
-
-    #videoList li:hover {
-      background: #f1f5ff;
-    }
-
-    #videoList strong {
-      font-size: 1.1rem;
-      color: #007bff;
-    }
-
-    #videoList small {
-      color: #6c757d;
-    }
-
-    #videoList em {
-      font-size: 0.85rem;
-      color: #495057;
-    }
-  </style>
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top shadow-sm">
-    <div class="container d-flex align-items-center justify-content-between">
-      <h1 class="logo"><a href="index.html">Omega's Academy</a></h1>
-      <nav>
-        <button class="btn btn-danger" id="logoutBtn"><i class="bi bi-box-arrow-right"></i> Logout</button>
-      </nav>
-    </div>
-  </header>
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <p class="m-0 fw-bold" style="font-size: 25px;">
+                <img src="img/icon.png" alt="" height="50px"> Omega's
+                <span style="color: #6a1b9a;">Academy</span>
+            </p>
+        </a>
 
-  <main id="main" style="margin-top: 100px;">
-    <div class="container">
-      <div class="section-title text-center">
-        <h2><i class="bi bi-mortarboard-fill"></i> Tutor Dashboard</h2>
-        <p id="welcomeMsg"></p>
-      </div>
-
-      <!-- Course Selector -->
-      <div class="mb-4">
-        <label for="courseSelect" class="form-label fw-bold">Select Course</label>
-        <select id="courseSelect" class="form-select shadow-sm">
-          <option value="">-- Choose a Course --</option>
-          <option value="Microsoft Excel">Microsoft Excel</option>
-          <option value="C">C Programming</option>
-          <option value="C++">C++ Programming</option>
-          <option value="Python">Python</option>
-          <option value="Java">Java</option>
-          <option value="Full-Stack">Full-Stack Development</option>
-          <option value="Web">Web Development</option>
-          <option value="Back-End">Back-End Development</option>
-          <option value="Front-End">Front-End Development</option>
-          <option value="DA">Data Analytics</option>
-          <option value="DSA">Data Structures and Algorithms</option>
-        </select>
-      </div>
-
-      <!-- Video Upload Form -->
-      <div class="card shadow-sm p-4 mb-4">
-        <h4><i class="bi bi-upload"></i> Upload a New Video</h4>
-        <form id="uploadForm">
-          <div class="mb-3">
-            <label for="videoTitle" class="form-label">Video Title</label>
-            <input type="text" id="videoTitle" class="form-control shadow-sm" placeholder="Enter video title" required>
-          </div>
-          <div class="mb-3">
-            <label for="videoDescription" class="form-label">Description</label>
-            <textarea id="videoDescription" class="form-control shadow-sm" rows="3"
-              placeholder="Enter video description"></textarea>
-          </div>
-          <div class="mb-3">
-            <label for="videoFile" class="form-label">Upload Video</label>
-            <input type="file" id="videoFile" class="form-control shadow-sm" accept="video/*" required>
-          </div>
-          <button type="submit" class="btn btn-success"><i class="bi bi-cloud-arrow-up"></i> Upload</button>
-        </form>
-      </div>
-
-      <!-- Video List -->
-      <div class="card shadow-sm p-4">
-        <h4><i class="bi bi-collection-play-fill"></i> Uploaded Videos</h4>
-        <ul id="videoList" class="list-group"></ul>
-      </div>
-    </div>
-  </main>
-
-  <script>
-    // ✅ Check if logged in & role is tutor
-    const user = JSON.parse(localStorage.getItem("loggedInUser"));
-    if (!user || user.role.toLowerCase() !== "tutor") {
-      alert("Unauthorized access! Redirecting to login.");
-      window.location.href = "login.html";
-    }
-
-    // Show welcome message
-    document.getElementById("welcomeMsg").innerText = "Welcome, " + user.name;
-
-    // Logout
-    document.getElementById("logoutBtn").addEventListener("click", () => {
-      localStorage.removeItem("loggedInUser");
-      window.location.href = "login.html";
-    });
-
-    // Handle video upload
-    const uploadForm = document.getElementById("uploadForm");
-    const videoList = document.getElementById("videoList");
-
-    uploadForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const title = document.getElementById("videoTitle").value;
-      const description = document.getElementById("videoDescription").value;
-      const fileInput = document.getElementById("videoFile");
-
-      if (!fileInput.files.length) {
-        alert("Please select a video file.");
-        return;
-      }
-
-      const file = fileInput.files[0];
-
-      // For demo, we just show it in the list
-      const li = document.createElement("li");
-      li.className = "list-group-item d-flex justify-content-between align-items-center shadow-sm";
-      li.innerHTML = `
-        <div>
-          <strong>${title}</strong><br>
-          <small>${description}</small><br>
-          <em>File: ${file.name}</em>
+        <div class="ms-auto d-flex align-items-center px-4">
+            <span id="welcomeMsg" class="fw-bold text-primary me-3"></span>
+            <button id="logoutBtn" class="btn btn-outline-danger btn-sm">
+                <i class="bi bi-box-arrow-right"></i> Logout
+            </button>
         </div>
-        <button class="btn btn-sm btn-danger deleteBtn"><i class="bi bi-trash"></i> Delete</button>
-      `;
-      videoList.appendChild(li);
+    </nav>
+    <!-- Navbar End -->
 
-      // Clear form
-      uploadForm.reset();
+    <!-- Dashboard Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="section-title bg-white text-start pe-3">Daily Update</h6>
+                    <h1 class="mb-4" style="color: #6a1b9a;">Tutor's Dashboard</h1>
 
-      // Delete button functionality
-      li.querySelector(".deleteBtn").addEventListener("click", () => {
-        li.remove();
-      });
-    });
-  </script>
+                    <!-- Attendance Form -->
+                    <div class="card shadow-sm p-4 mb-4">
+                        <h4 class="fw-semi-bold mb-3"><i class="bi bi-clipboard-check me-2"></i>Record Attendance</h4>
+                        <form id="attendanceForm">
+                            <!-- Course Dropdown -->
+                            <div class="mb-3">
+                                <label for="course" class="form-label">Select Course</label>
+                                <select id="course" class="form-control" required>
+                                    <option value="">-- Choose Course --</option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Physics">Physics</option>
+                                    <option value="Chemistry">Chemistry</option>
+                                    <option value="Biology">Biology</option>
+                                    <option value="Computer Science">Computer Science</option>
+                                </select>
+                            </div>
+
+                            <!-- Date & Time -->
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="classDate" class="form-label">Date of Class</label>
+                                    <input type="date" id="classDate" class="form-control" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="classTime" class="form-label">Time</label>
+                                    <input type="time" id="classTime" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <!-- Student Attendance -->
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="presentCount" class="form-label">No. of Students Present</label>
+                                    <input type="number" id="presentCount" class="form-control" min="0" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="absentCount" class="form-label">No. of Students Absent</label>
+                                    <input type="number" id="absentCount" class="form-control" min="0" required>
+                                </div>
+                            </div>
+
+                            <!-- Names of Absentees -->
+                            <div class="mb-3">
+                                <label for="absentees" class="form-label">Names of Absentees</label>
+                                <textarea id="absentees" class="form-control" rows="2"
+                                    placeholder="Enter names of absentees"></textarea>
+                            </div>
+
+                            <!-- Class Title -->
+                            <div class="mb-3">
+                                <label for="classTitle" class="form-label">Title of Class</label>
+                                <input type="text" id="classTitle" class="form-control" placeholder="Enter class title"
+                                    required>
+                            </div>
+
+                            <!-- Class Description -->
+                            <div class="mb-3">
+                                <label for="classDesc" class="form-label">Description of Class</label>
+                                <textarea id="classDesc" class="form-control" rows="3"
+                                    placeholder="Enter details of today’s class"></textarea>
+                            </div>
+
+                            <!-- Next Day Preplan -->
+                            <div class="mb-3">
+                                <label for="nextPlan" class="form-label">Next Day's Preplan</label>
+                                <textarea id="nextPlan" class="form-control" rows="3"
+                                    placeholder="Enter what will be covered in the next class"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary px-4">Save Attendance</button>
+                        </form>
+                    </div>
+
+                    <!-- Attendance Records -->
+                    <div class="card shadow-sm p-4">
+                        <h4 class="fw-semi-bold mb-3"><i class="bi bi-journal-text me-2"></i>Saved Attendance Records</h4>
+                        <ul id="attendanceList" class="list-group"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Dashboard End -->
+
+    <!-- Scripts -->
+    <script>
+        // ✅ Check if logged in & role is tutor
+        const user = JSON.parse(localStorage.getItem("loggedInUser"));
+        if (!user || user.role.toLowerCase() !== "tutor") {
+            alert("Unauthorized access! Redirecting to login.");
+            window.location.href = "login.html";
+        }
+
+        // Show welcome message
+        document.getElementById("welcomeMsg").innerText = "Welcome, " + user.username;
+
+        // Logout
+        document.getElementById("logoutBtn").addEventListener("click", () => {
+            localStorage.removeItem("loggedInUser");
+            window.location.href = "login.html";
+        });
+
+        // Auto-fill date & time when page loads
+        window.addEventListener("DOMContentLoaded", () => {
+            const today = new Date();
+            document.getElementById("classDate").value = today.toISOString().split("T")[0];
+            document.getElementById("classTime").value = today.toTimeString().slice(0, 5);
+
+            // Fetch previous attendance records from SheetDB
+            fetchAttendanceRecords();
+        });
+
+        // Function to fetch records from SheetDB
+        async function fetchAttendanceRecords() {
+            const sheetdbUrl = "https://sheetdb.io/api/v1/co7vcrvr1t07t"; // 🔑 Your SheetDB URL
+
+            try {
+                const response = await fetch(sheetdbUrl);
+                const data = await response.json();
+
+                // Filter records for the logged-in tutor
+                const tutorRecords = data.filter(record => record.tutor === user.username);
+
+                const attendanceList = document.getElementById("attendanceList");
+                attendanceList.innerHTML = ""; // Clear existing list
+
+                tutorRecords.forEach(record => {
+                    appendAttendanceToUI(record);
+                });
+
+            } catch (error) {
+                console.error("Error fetching attendance records:", error);
+                alert("Could not retrieve previous attendance records.");
+            }
+        }
+
+        // Function to append a single record to the UI
+        function appendAttendanceToUI(record) {
+            const li = document.createElement("li");
+            li.className = "list-group-item";
+            li.innerHTML = `
+                <strong>${record.course}</strong><br>
+                ${record.date} | ${record.time}<br>
+                <em>${record.title}</em><br>
+                <small><b>Present:</b> ${record.present}, <b>Absent:</b> ${record.absent}</small><br>
+                <small><b>Absentees:</b> ${record.absentees || 'None'}</small><br>
+                <small><b>Description:</b> ${record.description}</small><br>
+                <small><b>Next Plan:</b> ${record.next_plan}</small>
+            `;
+            document.getElementById("attendanceList").appendChild(li);
+        }
+
+        // Attendance form logic
+        document.getElementById("attendanceForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            // Get form data
+            const record = {
+                tutor: user.username,
+                course: document.getElementById("course").value,
+                date: document.getElementById("classDate").value,
+                time: document.getElementById("classTime").value,
+                present: document.getElementById("presentCount").value,
+                absent: document.getElementById("absentCount").value,
+                absentees: document.getElementById("absentees").value,
+                title: document.getElementById("classTitle").value,
+                description: document.getElementById("classDesc").value,
+                next_plan: document.getElementById("nextPlan").value
+            };
+
+            // Save to SheetDB
+            try {
+                const sheetdbUrl = "https://sheetdb.io/api/v1/co7vcrvr1t07t"; // 🔑 Your SheetDB URL
+                await fetch(sheetdbUrl, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ data: [record] })
+                });
+
+                // ✅ Append record to UI instantly
+                appendAttendanceToUI(record);
+                alert("Attendance saved successfully!");
+
+            } catch (error) {
+                console.error("Error saving to SheetDB:", error);
+                alert("Error saving attendance. Please try again.");
+            }
+
+            // Reset form but keep date & time auto-filled
+            e.target.reset();
+            const today = new Date();
+            document.getElementById("classDate").value = today.toISOString().split("T")[0];
+            document.getElementById("classTime").value = today.toTimeString().slice(0, 5);
+        });
+    </script>
 </body>
-
 </html>
